@@ -1,7 +1,8 @@
 import sys
+import os
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget
 from PyQt5.uic import loadUi
-from sub_window_factory import SubWindowFactory
+from .sub_window_factory import SubWindowFactory
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -13,7 +14,8 @@ class MainWindow(QMainWindow):
         self.setGeometry(100, 100, 800, 600)
 
     def initUI(self):
-        loadUi('../../windows/main.ui', self)
+
+        loadUi('windows/main.ui', self)
 
         for button in self.findChildren(QPushButton):
             if button.objectName().startswith("btn"):
