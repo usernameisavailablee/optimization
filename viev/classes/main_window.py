@@ -15,7 +15,7 @@ class MainWindow(QMainWindow):
 
     def initUI(self):
 
-        loadUi('windows/main.ui', self)
+        loadUi('viev/windows/main.ui', self)
 
         for button in self.findChildren(QPushButton):
             if button.objectName().startswith("btn"):
