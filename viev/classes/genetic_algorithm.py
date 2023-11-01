@@ -1,6 +1,6 @@
 from .sub_window import SubWindow
 from PyQt5.QtWidgets import QPushButton, QMessageBox
-from modules.rozenbrock import *
+from modules.genetic import *
 class SubWindowGeneticAlgorithm(SubWindow):
     def __init__(self, main_window, window_name):
         ui_filename = f'viev/windows/subwindow_{window_name}.ui'

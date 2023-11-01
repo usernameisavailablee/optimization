@@ -45,39 +45,25 @@ def mutate(children, mutation_rate=0.01):
 # Главная функция генетического алгоритма
 # Главная функция генетического алгоритма
 def genetic_algorithm(pop_size, genome_length, generations):
-    fitness_history = []  # Список для отслеживания лучшей пригодности на каждом поколении
+    best_individual_history = []  # Список для отслеживания лучшей особи на каждом поколении
+    all_generations = []  # Список для отслеживания всех поколений
     population = initialize_population(pop_size, genome_length)
+    best_individual = None
+
     for generation in range(generations):
         fitness_values = fitness(population)
+        best_index = np.argmax(fitness_values)  # Индекс лучшей особи
+        best_individual = population[best_index]  # Лучшая особь на данном поколении
+        best_individual_as_list = best_individual.tolist()  # Преобразуем массив в список
+        best_individual_history.append(best_individual_as_list)  # Сохраняем лучшую особь
+        all_generations.append(population.tolist())  # Сохраняем все особи текущего поколения
         parents = select_parents(population, fitness_values)
         children = crossover(parents)
         children = mutate(children)
         population = children
-        best_fitness = np.max(fitness_values)
-        best_individual = population[np.argmax(fitness_values)]
-        fitness_history.append(best_fitness)
-        print(f"Поколение {generation}: Лучшая пригодность = {best_fitness}, Лучший индивид = {best_individual}")
 
-    # Создание 3D-графика для отображения функции Розенброкка
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-    x = np.linspace(-2, 2, 100)
-    y = np.linspace(-1, 3, 100)
-    X, Y = np.meshgrid(x, y)
-    Z = rosenbrock(X, Y, 0)  # Фиксируйте z на нуле, так как функция трех переменных
-    ax.plot_surface(X, Y, Z, cmap='viridis', alpha=0.8)
+    return best_individual, best_individual_history, all_generations 
 
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('Z')
-    ax.set_title('Функция Розенброкка в трехмерном пространстве')
 
-    # Добавление точек, представляющих популяцию на графике
-    best_x = best_individual[0]
-    best_y = best_individual[1]
-    best_z = 0  # Здесь также фиксируйте z на нуле
-    best_w = rosenbrock(best_x, best_y, best_z)
-    ax.scatter([best_x], [best_y], [best_w], color='red', s=50, label='Лучший индивид')
-    plt.legend()
-    plt.show()
-
+# best_individual, best_individual_history,all_generations  = genetic_algorithm(pop_size=100, genome_length=3, generations=10)
+# print(all_generations)
