@@ -1,7 +1,12 @@
-
 from .genetic_algorithm import SubWindowGeneticAlgorithm
 from .gradient_descent import SubWindowGradientDescent
+from .kun_takker import SubWindowKunTakker
+from .particle_swarm import SubWindowParticleSwarm
+from .bee_swarm import SubWindowBeeSwarm
+from .artifitial_immune_network import SubWindowArtifitialImmuneNetwork
+from .bakterial_optimization import SubWindowBakterialOptimization
 from .sub_window import SubWindow
+from .dimensional_algorithm import SubWindowDimensionalAlgorithm
 import importlib
 
 from modules.camel_case import camel_case
