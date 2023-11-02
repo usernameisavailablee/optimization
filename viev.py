@@ -5,9 +5,9 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from PyQt5.QtGui import QFont  # Добавьте импорт QFont
-from modules.genetic import *
-from matplotlib import cm
 
+from matplotlib import cm
+from modules.genetic import *
 def rosenbrock(x, y, z):
     return (1 - x) ** 2 + 100 * (y - x ** 2) ** 2 + z ** 2
 
