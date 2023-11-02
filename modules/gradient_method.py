@@ -16,10 +16,12 @@ init_printing(use_unicode=True)
 def get_lmd():
   return 0.0008
 
+def get_eps():
+  return 1
 
 # получить число итераций
 def get_n():
-  return 10
+  return 1000
 
 
 # получить начальное значение
@@ -64,14 +66,26 @@ def start():
   # ax.set_xlabel('x')
   # ax.set_ylabel('y')
   # ax.set_zlabel('rosenbrock')
-
-  xx, yy = get_x0y0()
   # ax.scatter(xx, yy, __function__(xx, yy), c='r')
+
+  xx_new, yy_new = get_x0y0()
+  f_value_new = __function__(xx_new, yy_new)
   ans_list = []
+
   for n in range(get_n()):
-    xx = xx - get_lmd() * __df_dx__(xx, yy)
-    yy = yy - get_lmd() * __df_dy__(xx, yy)
-    ans_list.append([xx, yy])
+    xx_old = xx_new
+    yy_old = yy_new
+    f_value_old = f_value_new
+
+    ans_list.append([xx_old, yy_old])
+
+    xx_new = xx_old - get_lmd() * __df_dx__(xx_old, yy_old)
+    yy_new = yy_old - get_lmd() * __df_dy__(xx_old, yy_old)
+    f_value_new = __function__(xx_new, yy_new)
+
+    if abs(f_value_new - f_value_old) < get_eps():
+      break
+  return ans_list
     # ax.scatter(xx, yy, __function__(xx, yy), c='r')
     #
     # перерисовка графика и задержка на 10 мс
@@ -81,7 +95,6 @@ def start():
     # time.sleep(0.1)
     # plt.show()
 
-  return ans_list
   # plt.ioff()  # выключение интерактивного режима отображения графиков
   # plt.show()
 
