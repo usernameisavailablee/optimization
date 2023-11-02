@@ -10,7 +10,7 @@ class SubWindowGeneticAlgorithm(SubWindow):
         self.combo_box = self.findChild(QComboBox, 'comboBox_Function')
 
 
-        self.result = [(1, 1, 1), (2, 2, 2), (3, 3, 3)]
+        self.result = [[0,0]]
         self.func = None
 
         self.button.clicked.connect(self.button_click_handler)
@@ -21,7 +21,7 @@ class SubWindowGeneticAlgorithm(SubWindow):
         self.func = choise_function(func_name)
     #    best_individual, best_individual_history,all_generations  = genetic_algorithm(pop_size=100, genome_length=3, generations=10,self.func)
         ff = self.func
-        best_individual, best_individual_history, all_generations = genetic_algorithm(100, 2,10,self.func)
+        best_individual, best_individual_history, all_generations = genetic_algorithm(100, 3, 100,self.func,0,20,0,20,0.001,0.001)
         print(best_individual_history)
         self.result = best_individual_history
         # Вызов суперклассового обработчика с передачей result и func

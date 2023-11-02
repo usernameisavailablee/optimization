@@ -8,7 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib import cm  # Импортируйте модуль colormap
 # Функция для создания 3D графика
-def create_3d_plot(result, func):
+def create_3d_plot(result, func, x_min, x_max, y_min, y_max, x_step, y_step):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     
@@ -16,20 +16,20 @@ def create_3d_plot(result, func):
         x, y = coordinates
         ax.scatter(x, y, c='r', marker='o')
     
-    # Постройте поверхность
-    X = np.linspace(-2, 2, 100)
-    Y = np.linspace(-2, 2, 100)
+    # Создайте массивы X и Y, используя переданные значения
+    X = np.arange(x_min, x_max, x_step)
+    Y = np.arange(y_min, y_max, y_step)
     X, Y = np.meshgrid(X, Y)
     Z = func(X, Y)  # Вызовите функцию с аргументами X и Y
 
     ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, alpha=0.5)
-
     
     ax.set_xlabel('X')
     ax.set_ylabel('Y')
-    ax.set_zlabel('ыыы')
-    
+    ax.set_zlabel('значения Z')
+
     return fig
+
 
 # # Создание приложения PyQt
 # app = QApplication(sys.argv)

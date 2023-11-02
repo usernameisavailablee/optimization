@@ -1,13 +1,20 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-
+from .functions import choise_function
 # Определение функции Розенброкка для трех переменных
 
 
 # Функция для инициализации популяции
-def initialize_population(pop_size, genome_length):
-    return np.random.rand(pop_size, genome_length)
+def initialize_population(pop_size, x_min, x_max, y_min, y_max,x_step, y_step):
+    x = np.arange(x_min, x_max, x_step)
+    y = np.arange(y_min, y_max, y_step)
+    x_samples, y_samples = np.meshgrid(x, y)
+    population = np.column_stack((x_samples.ravel(), y_samples.ravel()))
+    if pop_size < population.shape[0]:
+        population = population[np.random.choice(population.shape[0], pop_size, replace=False)]
+    return population
+
 
 # Функция для вычисления пригодности (фитнеса) особей
 def fitness(population, fitness_function):
@@ -42,10 +49,10 @@ def mutate(children, mutation_rate=0.01):
 
 
 # Главная функция генетического алгоритма
-def genetic_algorithm(pop_size, genome_length, generations, fitness_function):
+def genetic_algorithm(pop_size, genome_length, generations, fitness_function,x_min, x_max, y_min, y_max,x_step,y_step):
     best_individual_history = []  # Список для отслеживания лучшей особи на каждом поколении
     all_generations = []  # Список для отслеживания всех поколений
-    population = initialize_population(pop_size, genome_length)
+    population = initialize_population(pop_size,x_min, x_max, y_min, y_max,x_step,y_step)
     best_individual = None
 
     for generation in range(generations):
@@ -63,6 +70,6 @@ def genetic_algorithm(pop_size, genome_length, generations, fitness_function):
     return best_individual, best_individual_history, all_generations 
 
 
-
-# best_individual, best_individual_history,all_generations  = genetic_algorithm(pop_size=100, genome_length=3, generations=10)
-# print(all_generations)
+# func = choise_function("Функция Розенброкка")
+# best_individual, best_individual_history,all_generations  = genetic_algorithm(100, 3, 100,func,0,20,0,20,0.01,0.01)
+# print(best_individual_history)
