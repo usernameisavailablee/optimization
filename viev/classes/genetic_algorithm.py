@@ -17,9 +17,9 @@ class SubWindowGeneticAlgorithm(SubWindow):
         
     def button_click_handler(self):
         x_min = -2
-        x_max = 20
+        x_max = 2
         y_min =-2
-        y_max = 20
+        y_max = 2
         x_step =  0.01
         y_step = 0.01
         selected_item = self.combo_box.currentText()
@@ -30,7 +30,7 @@ class SubWindowGeneticAlgorithm(SubWindow):
         best_individual, best_individual_history, all_generations = genetic_algorithm(100, 3, 100,self.func,x_min, x_max, y_min, y_max,x_step, y_step)
         self.result = best_individual_history
         # Вызов суперклассового обработчика с передачей result и func
-        super().button_click_handler(self.result, self.func,x_min, x_max, y_min, y_max,x_step, y_step)
+        super().button_click_handler(self.result, self.func,best_individual,x_min, x_max, y_min, y_max,x_step, y_step)
 
 
 

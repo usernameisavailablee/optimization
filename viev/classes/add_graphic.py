@@ -8,25 +8,49 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib import cm  # Импортируйте модуль colormap
 # Функция для создания 3D графика
-def create_3d_plot(result, func, x_min, x_max, y_min, y_max, x_step, y_step):
+def create_3d_plot(result, func,best_individual, x_min, x_max, y_min, y_max, x_step, y_step):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     
-    for coordinates in result:
-        x, y = coordinates
-        ax.scatter(x, y, c='r', marker='o')
+    # for coordinates in result:
+    #     x, y = coordinates
+    #     ax.scatter(x, y, c='r', marker='o')
     
-    # Создайте массивы X и Y, используя переданные значения
+    # # Создайте массивы X и Y, используя переданные значения
+    # X = np.arange(x_min, x_max, x_step)
+    # Y = np.arange(y_min, y_max, y_step)
+    # X, Y = np.meshgrid(X, Y)
+    # Z = func(X, Y)  # Вызовите функцию с аргументами X и Y
+
+    # ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, alpha=0.5)
+    
+    # ax.set_xlabel('X')
+    # ax.set_ylabel('Y')
+    # ax.set_zlabel('f(x,y)')
+
     X = np.arange(x_min, x_max, x_step)
     Y = np.arange(y_min, y_max, y_step)
     X, Y = np.meshgrid(X, Y)
-    Z = func(X, Y)  # Вызовите функцию с аргументами X и Y
+    Z = func(X, Y)  # Вычислите значения функции Z в зависимости от X и Y
 
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
     ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, alpha=0.5)
-    
-    ax.set_xlabel('X')
-    ax.set_ylabel('Y')
-    ax.set_zlabel('значения Z')
+
+    for coordinates in result:
+        x, y = coordinates
+        # Здесь z соответствует значению функции Z в этой точке
+        z = func(x, y)
+        ax.scatter(x, y, z, c='r', marker='o')
+
+    print (best_individual)
+    x, y = best_individual
+    # Здесь z соответствует значению функции Z в этой точке
+    z = func(x, y)
+    ax.scatter(x, y, z, c='g', marker='o')
+
+
+
 
     return fig
 

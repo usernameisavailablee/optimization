@@ -2,7 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 from .functions import choise_function
-# Определение функции Розенброкка для трех переменных
 
 
 # Функция для инициализации популяции
@@ -113,6 +112,9 @@ def genetic_algorithm(pop_size, genome_length, generations, fitness_function,x_m
         # Добавили данные для вывода
         best_index = np.argmax(fitness_values)  # Индекс лучшей особи
         best_individual = population[best_index]  # Лучшая особь на данном поколении
+
+
+
         best_individual_as_list = best_individual.tolist()  # Преобразуем массив в список
         best_individual_history.append(best_individual_as_list)  # Сохраняем лучшую особь
         all_generations.append(population.tolist())  # Сохраняем все особи текущего поколения
@@ -128,6 +130,32 @@ def genetic_algorithm(pop_size, genome_length, generations, fitness_function,x_m
         print(len(population))
         print("val pop")
         print(population)
+    print("best_individual_history")
+    print(best_individual_history)
+    # best_overall_individual = None
+    # best_overall_fitness = float('-inf')
+    # for generation_individuals in best_individual_history:
+    #     for individual in generation_individuals:
+    #         # Вычислите приспособленность для текущей особи
+    #         current_fitness = fitness_function(individual[0], individual[1])
+
+    #         # Если текущая особь имеет лучшую приспособленность, обновите лучшую особь
+    #         if current_fitness > best_overall_fitness:
+    #             best_overall_individual = individual
+    #             best_overall_fitness = current_fitness
+    # best_individual = best_overall_individual
+    # best_overall_individual = max(best_individual_history, key=lambda x: fitness_function(x[0], x[1]))
+    # best_individual = best_overall_individual
+
+    best_overall_individual = None
+    best_overall_fitness = float('-inf')
+
+    for individual in best_individual_history:
+        current_fitness = fitness_function(individual[0], individual[1])
+        if current_fitness > best_overall_fitness:
+            best_overall_individual = individual
+            best_overall_fitness = current_fitness
+    best_individual = best_overall_individual
     return best_individual, best_individual_history, all_generations 
 
 

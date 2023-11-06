@@ -22,9 +22,9 @@ class SubWindow(QMainWindow):
         self.main_window.last_sub_window_geometry = self.geometry()
         self.main_window.show()  # При закрытии дополнительного окна, показываем главное окно
 
-    def button_click_handler(self,result,func,x_min, x_max, y_min, y_max,x_step, y_step):
+    def button_click_handler(self,result,func,best_individual,x_min, x_max, y_min, y_max,x_step, y_step):
 
-        fig = create_3d_plot(result, func,x_min, x_max, y_min, y_max,x_step, y_step)
+        fig = create_3d_plot(result, func,best_individual,x_min, x_max, y_min, y_max,x_step, y_step)
 
         # Создайте диалоговое окно для отображения графика
         dialog = QDialog()
