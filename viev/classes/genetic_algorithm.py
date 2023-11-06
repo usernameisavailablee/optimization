@@ -16,9 +16,9 @@ class SubWindowGeneticAlgorithm(SubWindow):
         self.button.clicked.connect(self.button_click_handler)
         
     def button_click_handler(self):
-        x_min = 0
+        x_min = -2
         x_max = 20
-        y_min =0
+        y_min =-2
         y_max = 20
         x_step =  0.01
         y_step = 0.01
@@ -27,8 +27,7 @@ class SubWindowGeneticAlgorithm(SubWindow):
         self.func = choise_function(func_name)
     #    best_individual, best_individual_history,all_generations  = genetic_algorithm(pop_size=100, genome_length=3, generations=10,self.func)
         ff = self.func
-        best_individual, best_individual_history, all_generations = genetic_algorithm(20, 3, 10,self.func,x_min, x_max, y_min, y_max,x_step, y_step)
-        print(best_individual_history)
+        best_individual, best_individual_history, all_generations = genetic_algorithm(100, 3, 100,self.func,x_min, x_max, y_min, y_max,x_step, y_step)
         self.result = best_individual_history
         # Вызов суперклассового обработчика с передачей result и func
         super().button_click_handler(self.result, self.func,x_min, x_max, y_min, y_max,x_step, y_step)
