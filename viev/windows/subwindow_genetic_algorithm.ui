@@ -14,7 +14,7 @@
    <string>Генетика</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="lineEditMinX">
+   <widget class="QLineEdit" name="x_min">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditMinY">
+   <widget class="QLineEdit" name="y_min">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -72,11 +72,6 @@
     <item>
      <property name="text">
       <string>Функция Розенброкка</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Функция Розенброкка 2</string>
      </property>
     </item>
     <item>
@@ -177,7 +172,7 @@
      <string>Запуск алгоритма</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_X_2">
+   <widget class="QLineEdit" name="pop_size">
     <property name="geometry">
      <rect>
       <x>390</x>
@@ -187,21 +182,11 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_Y_2">
+   <widget class="QLineEdit" name="generations">
     <property name="geometry">
      <rect>
       <x>390</x>
       <y>120</y>
-      <width>113</width>
-      <height>25</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_Z_2">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>150</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -220,24 +205,11 @@
      <string>Размер популяции</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>120</y>
-      <width>141</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Длина генома</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>150</y>
+      <y>120</y>
       <width>161</width>
       <height>20</height>
      </rect>
@@ -246,7 +218,7 @@
      <string>Количество генераций</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditMaxY">
+   <widget class="QLineEdit" name="y_max">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -256,7 +228,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditMaxX">
+   <widget class="QLineEdit" name="x_max">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -292,7 +264,7 @@
      <string>max Y</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditStepY">
+   <widget class="QLineEdit" name="y_step">
     <property name="geometry">
      <rect>
       <x>390</x>
@@ -302,7 +274,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditStepX">
+   <widget class="QLineEdit" name="x_step">
     <property name="geometry">
      <rect>
       <x>390</x>
@@ -351,6 +323,18 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>x_min</tabstop>
+  <tabstop>x_max</tabstop>
+  <tabstop>x_step</tabstop>
+  <tabstop>y_min</tabstop>
+  <tabstop>y_max</tabstop>
+  <tabstop>y_step</tabstop>
+  <tabstop>pop_size</tabstop>
+  <tabstop>generations</tabstop>
+  <tabstop>comboBox_Function</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

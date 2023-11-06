@@ -19,7 +19,7 @@ def initialize_population(pop_size, x_min, x_max, y_min, y_max,x_step, y_step):
 def fitness(population, fitness_function):
     x = population[:, 0]
     y = population[:, 1]
-    return 1 / (fitness_function(x, y) + 1e-6)
+    return 1/ (fitness_function(x, y) + 1e-6)
 
 
 
@@ -96,7 +96,7 @@ def mutate(children, mutation_rate=0.01):
 
 
 # Главная функция генетического алгоритма
-def genetic_algorithm(pop_size, genome_length, generations, fitness_function,x_min, x_max, y_min, y_max,x_step,y_step):
+def genetic_algorithm(pop_size, generations, fitness_function,x_min, x_max, y_min, y_max,x_step,y_step):
     best_individual_history = []  # Список для отслеживания лучшей особи на каждом поколении
     all_generations = []  # Список для отслеживания всех поколений
 
@@ -124,7 +124,6 @@ def genetic_algorithm(pop_size, genome_length, generations, fitness_function,x_m
 
         children = crossover(parents)
         children = mutate(children)
-#        population = children + bad_parents
         population = np.concatenate((children, bad_parents), axis=0)
         print ("pop")
         print(len(population))
@@ -132,33 +131,6 @@ def genetic_algorithm(pop_size, genome_length, generations, fitness_function,x_m
         print(population)
     print("best_individual_history")
     print(best_individual_history)
-    # best_overall_individual = None
-    # best_overall_fitness = float('-inf')
-    # for generation_individuals in best_individual_history:
-    #     for individual in generation_individuals:
-    #         # Вычислите приспособленность для текущей особи
-    #         current_fitness = fitness_function(individual[0], individual[1])
-
-    #         # Если текущая особь имеет лучшую приспособленность, обновите лучшую особь
-    #         if current_fitness > best_overall_fitness:
-    #             best_overall_individual = individual
-    #             best_overall_fitness = current_fitness
-    # best_individual = best_overall_individual
-    # best_overall_individual = max(best_individual_history, key=lambda x: fitness_function(x[0], x[1]))
-    # best_individual = best_overall_individual
-
-    best_overall_individual = None
-    best_overall_fitness = float('-inf')
-
-    for individual in best_individual_history:
-        current_fitness = fitness_function(individual[0], individual[1])
-        if current_fitness > best_overall_fitness:
-            best_overall_individual = individual
-            best_overall_fitness = current_fitness
+    best_overall_individual = min(best_individual_history, key=lambda x: max(x))
     best_individual = best_overall_individual
     return best_individual, best_individual_history, all_generations 
-
-
-# func = choise_function("Функция Розенброкка")
-# best_individual, best_individual_history,all_generations  = genetic_algorithm(100, 3, 100,func,0,20,0,20,0.01,0.01)
-# print(best_individual_history)
