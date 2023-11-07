@@ -19,7 +19,7 @@ def initialize_population(pop_size, x_min, x_max, y_min, y_max,x_step, y_step):
 def fitness(population, fitness_function):
     x = population[:, 0]
     y = population[:, 1]
-    return 1/ (fitness_function(x, y) + 1e-6)
+    return  1/(fitness_function(x, y) + 1e-6)
 
 
 
