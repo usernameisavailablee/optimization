@@ -1,76 +1,61 @@
-from datetime import time
-import matplotlib
-import numpy as np
-from matplotlib import pyplot as plt, cm
-import time
-from mpl_toolkits.mplot3d import Axes3D
-
-matplotlib.use('TkAgg')  # or 'Qt5Agg'
+import random
 from sympy import *
 
-x2, y2, z2 = symbols('x y z')
-init_printing(use_unicode=True)
 
-
-# получить шаг сходимости
-def get_lmd():
-  return 0.0008
-
-def get_eps():
-  return 1
-
-# получить число итераций
-def get_n():
-  return 1000
-
-
-# получить начальное значение
-def get_x0y0():
-  return [-1, -1]
-
-
-def get_function():
+def __get_function__(lambda_func):
   x, y = symbols('x y')
-  return (1 - x) ** 2 + 100 * (y - x ** 2) ** 2
+  return lambda_func(x, y)
 
 
-def __df_dx__(x, y):
+def __df_dx__(lambda_func, x, y):
+  add_func = __get_function__(lambda_func)
   xs, ys = symbols('x y')
-  df_dx = diff(get_function(), xs)
+  df_dx = diff(add_func, xs)
   return df_dx.subs([(xs, x), (ys, y)])
 
 
-def __df_dy__(x, y):
+def __df_dy__(lambda_func, x, y):
+  add_func = __get_function__(lambda_func)
   xs, ys = symbols('x y')
-  df_dy = diff(get_function(), ys)
+  df_dy = diff(add_func, ys)
   return df_dy.subs([(xs, x), (ys, y)])
 
 
-def __function__(x, y):
-  xs, ys = symbols('x y')
-  return get_function().subs([(xs, x), (ys, y)])
+def __generate_random_float__(start, end, step):
+  num_values = int((end - start) / step) + 1
+  random_value = random.randint(0, num_values - 1)
+  result = start + random_value * step
+
+  return result
 
 
-def start():
-
-
-  xx_new, yy_new = get_x0y0()
-  f_value_new = __function__(xx_new, yy_new)
+def method_performs_iterative_optimization_using_the_function_in_3D_visualizing_the_process(x_min, x_max, x_step, y_min,
+                                                                                            y_max, y_step, get_lmd,
+                                                                                            get_eps, get_n,
+                                                                                            lambda_func):
+  xx_new = __generate_random_float__(x_min, x_max, x_step)
+  yy_new = __generate_random_float__(y_min, y_max, y_step)
+  f_value_new = lambda_func(xx_new, yy_new)
   ans_list = []
 
-  for n in range(get_n()):
+  for n in range(get_n):
     xx_old = xx_new
     yy_old = yy_new
     f_value_old = f_value_new
 
     ans_list.append([xx_old, yy_old])
 
-    xx_new = xx_old - get_lmd() * __df_dx__(xx_old, yy_old)
-    yy_new = yy_old - get_lmd() * __df_dy__(xx_old, yy_old)
-    f_value_new = __function__(xx_new, yy_new)
+    xx_new = xx_old - get_lmd * __df_dx__(lambda_func, xx_old, yy_old)
+    yy_new = yy_old - get_lmd * __df_dy__(lambda_func, xx_old, yy_old)
+    f_value_new = lambda_func(xx_new, yy_new)
 
-    if abs(f_value_new - f_value_old) < get_eps():
+    if abs(f_value_new - f_value_old) < get_eps or xx_new < x_min or xx_new > x_max or yy_new < y_min or yy_new > y_max:
       break
   return ans_list
 
-start()
+
+method_performs_iterative_optimization_using_the_function_in_3D_visualizing_the_process(0, 1, 0.005, 0, 1, 0.005,
+                                                                                        0.0008, 0.0001, 1000,
+                                                                                        lambda x, y: (
+                                                                                                         1 - x) ** 2 + 100 * (
+                                                                                                         y - x ** 2) ** 2)
