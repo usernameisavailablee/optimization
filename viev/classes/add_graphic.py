@@ -8,9 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib import cm  # Импортируйте модуль colormap
 # Функция для создания 3D графика
-def create_3d_plot(result, func,best_individual, x_min, x_max, y_min, y_max, x_step, y_step):
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
+def create_3d_plot(result, func,all_generations, x_min, x_max, y_min, y_max, x_step, y_step):
 
     X = np.arange(x_min, x_max, x_step)
     Y = np.arange(y_min, y_max, y_step)
@@ -21,39 +19,38 @@ def create_3d_plot(result, func,best_individual, x_min, x_max, y_min, y_max, x_s
     ax = fig.add_subplot(111, projection='3d')
     ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, alpha=0.5)
 
-    for coordinates in result:
-        x, y = coordinates
-        # Здесь z соответствует значению функции Z в этой точке
-        z = func(x, y)
-        ax.scatter(x, y, z, c='r', marker='o')
 
-    x, y = best_individual
-    # Здесь z соответствует значению функции Z в этой точке
-    z = func(x, y)
-    ax.scatter(x, y, z, c='g', marker='o')
+    generation_counter = 0
+    scatter_points = []  # Список для отслеживания объектов Scatter
 
-    return fig
+    for generation in all_generations:
+        # Удалите предыдущие объекты Scatter
+        for scatter in scatter_points:
+            scatter.remove()
+        scatter_points.clear()
+
+        for coordinates in generation:
+            x, y = coordinates
+            z = func(x, y)
+            scatter = ax.scatter(x, y, z, c='r', marker='o')
+            scatter_points.append(scatter)
+
+            x1, y1 = result[generation_counter]
+            z1 = func(x1, y1)
+            scatter_result = ax.scatter(x1, y1, z1, c='g', marker='o')
+            scatter_points.append(scatter_result)
+
+        plt.pause(0.2)
+
+    # x, y = best_individual
+    # # Здесь z соответствует значению функции Z в этой точке
+    # z = func(x, y)
+    # ax.scatter(x, y, z, c='g', marker='o')
 
 
-# # Создание приложения PyQt
-# app = QApplication(sys.argv)
-# window = QMainWindow()
-# window.setGeometry(100, 100, 800, 600)
-# central_widget = QWidget()
-# layout = QVBoxLayout(central_widget)
-# window.setCentralWidget(central_widget)
-
-# # Пример вызова функции
-# # Результаты точек (замените на свои данные)
-# result = [(1, 1, 1), (2, 2, 2), (3, 3, 3)]
-# # Функция, которая вычисляет Z (замените на вашу функцию)
-# def func(x, y):
-#     return np.sin(np.sqrt(x**2 + y**2))
-
-# fig = create_3d_plot(result, func)
-
-# canvas = FigureCanvas(fig)
-# layout.addWidget(canvas)
-
-# window.show()
-# sys.exit(app.exec_())
+    # for coordinates in result:
+    #     plt.pause(0.0001)
+    #     x, y = coordinates
+    #     # Здесь z соответствует значению функции Z в этой точке
+    #     z = func(x, y)
+    #     ax.scatter(x, y, z, c='r', marker='o')

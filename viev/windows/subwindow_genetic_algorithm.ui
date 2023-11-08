@@ -23,6 +23,9 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="text">
+     <string>-2</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="y_min">
     <property name="geometry">
@@ -32,6 +35,9 @@
       <width>113</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>-2</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -181,6 +187,9 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="text">
+     <string>100</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="generations">
     <property name="geometry">
@@ -190,6 +199,9 @@
       <width>113</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>100</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -227,6 +239,9 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="text">
+     <string>2</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="x_max">
     <property name="geometry">
@@ -236,6 +251,9 @@
       <width>113</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>2</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">
@@ -273,6 +291,9 @@
       <height>25</height>
      </rect>
     </property>
+    <property name="text">
+     <string>0.01</string>
+    </property>
    </widget>
    <widget class="QLineEdit" name="x_step">
     <property name="geometry">
@@ -282,6 +303,9 @@
       <width>113</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="text">
+     <string>0.01</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_8">
