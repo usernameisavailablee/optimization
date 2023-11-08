@@ -34,16 +34,6 @@ def main_algorithm(space_size, So, Ab, Ap, nb, np, Sw, max_iterations):
         fitness_values = compute_fitness_for_all(points)
         elite_centers, promising_centers = select_elite_and_promising(points, Ab, Ap)
 
-        # Визуализация точек и их значений
-        x = [point[0] for point in points]
-        y = [point[1] for point in points]
-        z = fitness_values
-        ax.scatter(x, y, z, c='b', marker='o', label='Points')
-        # Находим лучшую точку
-        current_best = min(points, key=lambda point: rosenbrock(*point))
-        if best_point is None or rosenbrock(*current_best) < rosenbrock(*best_point):
-            best_point = current_best
-
         iteration += 1
 
     # Отображаем лучшую точку красным цветом
