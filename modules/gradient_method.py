@@ -52,21 +52,7 @@ def __function__(x, y):
 
 
 def start():
-  # x_plt = np.arange(-2, 2, 0.01)
-  # y_plt = np.arange(-2, 2, 0.01)
-  # rosenbrock_plt = np.array([[__function__(x, y) for x in x_plt] for y in y_plt])
-  #
-  # plt.ion()  # включение интерактивного режима отображения графиков
-  #
-  # fig = plt.figure()
-  # ax = fig.add_subplot(projection='3d')
-  # x, y = np.meshgrid(x_plt, y_plt)
-  # ax.plot_surface(x, y, rosenbrock_plt, rstride=20, cstride=20, cmap=cm.hot, alpha=0.6)
-  #
-  # ax.set_xlabel('x')
-  # ax.set_ylabel('y')
-  # ax.set_zlabel('rosenbrock')
-  # ax.scatter(xx, yy, __function__(xx, yy), c='r')
+
 
   xx_new, yy_new = get_x0y0()
   f_value_new = __function__(xx_new, yy_new)
@@ -86,17 +72,5 @@ def start():
     if abs(f_value_new - f_value_old) < get_eps():
       break
   return ans_list
-    # ax.scatter(xx, yy, __function__(xx, yy), c='r')
-    #
-    # перерисовка графика и задержка на 10 мс
-    # fig.canvas.draw()
-    # fig.canvas.flush_events()
-    #
-    # time.sleep(0.1)
-    # plt.show()
-
-  # plt.ioff()  # выключение интерактивного режима отображения графиков
-  # plt.show()
-
 
 start()
