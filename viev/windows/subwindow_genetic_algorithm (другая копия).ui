@@ -172,21 +172,21 @@
      <string>Запуск алгоритма</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lyamda">
+   <widget class="QLineEdit" name="pop_size">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>100</y>
+      <x>390</x>
+      <y>90</y>
       <width>113</width>
       <height>25</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="eps">
+   <widget class="QLineEdit" name="generations">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>130</y>
+      <x>390</x>
+      <y>120</y>
       <width>113</width>
       <height>25</height>
      </rect>
@@ -195,27 +195,27 @@
    <widget class="QLabel" name="label_4">
     <property name="geometry">
      <rect>
-      <x>240</x>
-      <y>100</y>
-      <width>31</width>
+      <x>220</x>
+      <y>90</y>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>λ</string>
+     <string>Размер популяции</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>130</y>
-      <width>41</width>
+      <x>220</x>
+      <y>120</y>
+      <width>161</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>eps</string>
+     <string>Количество генераций</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="y_max">
@@ -310,32 +310,6 @@
      <string>step Y</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="iterations">
-    <property name="geometry">
-     <rect>
-      <x>270</x>
-      <y>160</y>
-      <width>113</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>190</x>
-      <y>160</y>
-      <width>81</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Итераций</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -356,8 +330,8 @@
   <tabstop>y_min</tabstop>
   <tabstop>y_max</tabstop>
   <tabstop>y_step</tabstop>
-  <tabstop>lyamda</tabstop>
-  <tabstop>eps</tabstop>
+  <tabstop>pop_size</tabstop>
+  <tabstop>generations</tabstop>
   <tabstop>comboBox_Function</tabstop>
   <tabstop>pushButton</tabstop>
  </tabstops>

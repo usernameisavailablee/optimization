@@ -27,12 +27,6 @@ class SubWindowGeneticAlgorithm(SubWindow):
         self.button.clicked.connect(self.button_click_handler)
         
     def button_click_handler(self):
-        # x_min = float(x_min.text())
-        # x_max = float(x_max.text())
-        # y_min = float(y_min.text())
-        # y_max = float(y_max.text())
-        # x_step = float(x_step.text())
-        # y_step = float(y_step.text())
 
         x_min = float(self.line_edits['x_min'].text())
         x_max = float(self.line_edits['x_max'].text())
