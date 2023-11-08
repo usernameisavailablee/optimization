@@ -172,7 +172,7 @@
      <string>Запуск алгоритма</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lyamda">
+   <widget class="QLineEdit" name="lyambda">
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -343,7 +343,7 @@
      <x>0</x>
      <y>0</y>
      <width>676</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
   </widget>
@@ -356,7 +356,7 @@
   <tabstop>y_min</tabstop>
   <tabstop>y_max</tabstop>
   <tabstop>y_step</tabstop>
-  <tabstop>lyamda</tabstop>
+  <tabstop>lyambda</tabstop>
   <tabstop>eps</tabstop>
   <tabstop>comboBox_Function</tabstop>
   <tabstop>pushButton</tabstop>

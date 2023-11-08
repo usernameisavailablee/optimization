@@ -27,7 +27,7 @@ class SubWindowGradientDescent(SubWindow):
         self.func = None
 
         self.button.clicked.connect(self.button_click_handler)
-        
+
     def button_click_handler(self):
 
         x_min = float(self.line_edits['x_min'].text())
@@ -45,7 +45,11 @@ class SubWindowGradientDescent(SubWindow):
         func_name = selected_item
         self.func = choise_function(func_name)
         ff = self.func
-        best_history, best  = start()
+
+        best_history, best = method_performs_iterative_optimization_using_the_function_in_3D_visualizing_the_process(x_min, x_max, x_step, y_min,
+                                                                                                    y_max, y_step, lyambda,
+                                                                                                    eps, iterations,
+                                                                                                    ff)
         self.result = best_history
         # Вызов суперклассового обработчика с передачей result и func
-        super().button_click_handler(self.result, self.func,best_individual,x_min, x_max, y_min, y_max,x_step, y_step)
+        super().button_click_handler(self.result, self.func,best,x_min, x_max, y_min, y_max,x_step, y_step)
