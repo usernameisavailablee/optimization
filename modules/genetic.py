@@ -34,7 +34,7 @@ def select_parents(population, fitness_values, tournament_size=2):
     np.random.shuffle(population)
     print("start population")
     print (population)
-    
+
     while len(selected_parents) < num_parents:
 
         # Проверяем, если количество особей четное
@@ -59,9 +59,9 @@ def select_parents(population, fitness_values, tournament_size=2):
             group_indices = np.arange(len(group))  # Создать массив индексов особей в группе
             group_fitness = fitness_values[group_indices]  # Вычислить приспособленность для группы
             winner_index = group[group_indices[np.argmax(group_fitness)]]  # Выбрать наиболее приспособленную особь
-            
+
             selected_parents.append(winner_index)
-            
+
             # Удаляем выбранную особь из группы
             population = np.delete(population, np.where((population == winner_index).all(axis=1)), axis=0)
 
@@ -85,6 +85,8 @@ def crossover(parents, crossover_rate=0.7):
         else:
             children[i] = parents[i]
             children[i + 1] = parents[i + 1]
+    print("deti")
+    print(children)
     return children
 
 
@@ -133,4 +135,4 @@ def genetic_algorithm(pop_size, generations, fitness_function,x_min, x_max, y_mi
     print(best_individual_history)
     best_overall_individual = min(best_individual_history, key=lambda x: max(x))
     best_individual = best_overall_individual
-    return best_individual, best_individual_history, all_generations 
+    return best_individual, best_individual_history, all_generations

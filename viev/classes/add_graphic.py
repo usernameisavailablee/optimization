@@ -11,22 +11,6 @@ from matplotlib import cm  # Импортируйте модуль colormap
 def create_3d_plot(result, func,best_individual, x_min, x_max, y_min, y_max, x_step, y_step):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    
-    # for coordinates in result:
-    #     x, y = coordinates
-    #     ax.scatter(x, y, c='r', marker='o')
-    
-    # # Создайте массивы X и Y, используя переданные значения
-    # X = np.arange(x_min, x_max, x_step)
-    # Y = np.arange(y_min, y_max, y_step)
-    # X, Y = np.meshgrid(X, Y)
-    # Z = func(X, Y)  # Вызовите функцию с аргументами X и Y
-
-    # ax.plot_surface(X, Y, Z, cmap=cm.coolwarm, alpha=0.5)
-    
-    # ax.set_xlabel('X')
-    # ax.set_ylabel('Y')
-    # ax.set_zlabel('f(x,y)')
 
     X = np.arange(x_min, x_max, x_step)
     Y = np.arange(y_min, y_max, y_step)
@@ -43,14 +27,10 @@ def create_3d_plot(result, func,best_individual, x_min, x_max, y_min, y_max, x_s
         z = func(x, y)
         ax.scatter(x, y, z, c='r', marker='o')
 
-    print (best_individual)
     x, y = best_individual
     # Здесь z соответствует значению функции Z в этой точке
     z = func(x, y)
     ax.scatter(x, y, z, c='g', marker='o')
-
-
-
 
     return fig
 
