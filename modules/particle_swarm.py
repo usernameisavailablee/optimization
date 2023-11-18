@@ -56,6 +56,7 @@ if __name__ == "__main__":
                          ourFunction
                          )
 
+  list_of_generation
   for n in range(iterCount):
     # как выводить множество точек
     swarm.nextIteration()
