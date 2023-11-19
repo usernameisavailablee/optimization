@@ -79,4 +79,4 @@ def method_splain_fly(x_min, x_max, x_step, y_min, y_max, y_step, get_length, la
   return list_of_points
 
 
-method_splain_fly(-5, 5, 0.5, -5, 5, 0.5, 0.5, lambda x, y: (1 - x) ** 2 + 100 * (y - x ** 2) ** 2)
+method_splain_fly(-5, 5, 0.5, -5, 5, 0.5, 0.1, lambda x, y: (1 - x) ** 2 + 100 * (y - x ** 2) ** 2)
