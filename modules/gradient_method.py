@@ -52,11 +52,4 @@ def method_performs_iterative_optimization_using_the_function_in_3D_visualizing_
     if abs(f_value_new - f_value_old) < get_eps or xx_new < x_min or xx_new > x_max or yy_new < y_min or yy_new > y_max:
       break
   print(ans_list)
-  return ans_list,ans_list[len(ans_list)-1]
-
-#
-# method_performs_iterative_optimization_using_the_function_in_3D_visualizing_the_process(0, 1, 0.005, 0, 1, 0.005,
-#                                                                                         0.0008, 0.0001, 1000,
-#                                                                                         lambda x, y: (
-#                                                                                                          1 - x) ** 2 + 100 * (
-#                                                                                                          y - x ** 2) ** 2)
+  return ans_list

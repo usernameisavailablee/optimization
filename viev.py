@@ -104,7 +104,7 @@ class MainWindow(QMainWindow):
 
         if selected_algorithm == "Генетический":
             # Вызов генетического алгоритма
-            best_individual, best_individual_history, all_generations = genetic_algorithm(pop_size=100, genome_length=3, generations=100)
+            best_individual, best_individual_history, all_generations = genetic_algorithm(,
             result = best_individual_history  # Здесь предполагается, что fitness_history содержит результаты
             print(len(result))
             # Отобразить результат в MatplotlibWidget с использованием matplotlib

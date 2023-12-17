@@ -1,11 +1,6 @@
 import random
-import time
-
-
 import matplotlib
-import numpy as np
-from matplotlib import pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+
 matplotlib.use('TkAgg')  # or 'Qt5Agg'
 
 

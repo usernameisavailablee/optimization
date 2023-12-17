@@ -16,14 +16,15 @@ def create_new_point(min_x, max_x, now_x, spread_points):
     return rand_x
 
 
-def algorithm_of_bees(min_x, max_x, min_y, max_y, number_of_bees, function, time):
+
+def algorithm_of_bees(x_min, x_max, x_step, y_min,y_max, y_step, number_of_bees, time,lambda_func):
     # Пчёлы-разведчики
     scout_bees = []
     #_i
     for i in range(number_of_bees):
-        rand_x = round(random.uniform(min_x, max_x), 3)
-        rand_y = round(random.uniform(min_y, max_y), 3)
-        z = round(function(rand_x, rand_y), 3)
+        rand_x = round(random.uniform(x_min, x_max), 3)
+        rand_y = round(random.uniform(y_min, y_max), 3)
+        z = round(lambda_func(rand_x, rand_y), 3)
         scout_bees.append([[rand_x, rand_y], z])
     # Результат первой разведки
     sort_scout_bees = sorted(scout_bees, key=lambda x: x[1])
@@ -64,20 +65,20 @@ def algorithm_of_bees(min_x, max_x, min_y, max_y, number_of_bees, function, time
 
         for x, y in best_zones:
             for i in range(val_best):
-                rand_x = round(create_new_point(min_x, max_x, x, spread_points), 3)
-                rand_y = round(create_new_point(min_y, max_y, y, spread_points), 3)
+                rand_x = round(create_new_point(x_min, x_max, x, spread_points), 3)
+                rand_y = round(create_new_point(y_min, y_max, y, spread_points), 3)
 
-                z = round(function(rand_x, rand_y), 3)
+                z = round(lambda_func(rand_x, rand_y), 3)
                 new_scout_beens.append([[rand_x, rand_y], z])
 
         for x, y in perspective_zones:
             for i in range(val_persp):
-                rand_x = round(create_new_point(min_x, max_x, x, spread_points), 3)
-                rand_y = round(create_new_point(min_y, max_y, y, spread_points), 3)
+                rand_x = round(create_new_point(x_min, x_max, x, spread_points), 3)
+                rand_y = round(create_new_point(y_min, y_max, y, spread_points), 3)
 
-                z = round(function(rand_x, rand_y), 3)
+                z = round(lambda_func(rand_x, rand_y), 3)
                 new_scout_beens.append([[rand_x, rand_y], z])
-        # Отсортируем еновые точки
+        # Отсортируем новые точки
         sort_scout_bees = sorted(new_scout_beens, key=lambda x: x[1])
 
     return history_best_point, best_point
