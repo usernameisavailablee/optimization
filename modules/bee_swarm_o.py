@@ -28,7 +28,7 @@ def algorithm_of_bees(x_min, x_max, x_step, y_min,y_max, y_step, number_of_bees,
         scout_bees.append([[rand_x, rand_y], z])
     # Результат первой разведки
     sort_scout_bees = sorted(scout_bees, key=lambda x: x[1])
-
+    list_of_sort_scout_bees =[]
     # Количество лучших зон
     number_best_zone = 3
     # Количество перспективных зон
@@ -40,6 +40,10 @@ def algorithm_of_bees(x_min, x_max, x_step, y_min,y_max, y_step, number_of_bees,
     # запомним лучшую точку (минимальную)
     best_point = sort_scout_bees[0]
     for i in range(time):
+        normal_bees = []
+        for bee in sort_scout_bees:
+            normal_bees.append(bee[0])
+        list_of_sort_scout_bees.append(normal_bees)
         # Запоменим лучшую точку
         for item in sort_scout_bees[0:5]:
             new_item = [item[0][0], item[0][1], item[1]]
@@ -81,4 +85,4 @@ def algorithm_of_bees(x_min, x_max, x_step, y_min,y_max, y_step, number_of_bees,
         # Отсортируем новые точки
         sort_scout_bees = sorted(new_scout_beens, key=lambda x: x[1])
 
-    return history_best_point, best_point
+    return list_of_sort_scout_bees
