@@ -1,8 +1,9 @@
 from math import *
 import random as rnd
+from functions import choise_function
 
 class Unit:
-    def __init__(self,x_min, x_max, x_step, y_min,y_max, y_step, currentVelocityRatio, localVelocityRatio, globalVelocityRatio, function):
+    def __init__(self,x_min , x_max,currentVelocityRatio, localVelocityRatio, globalVelocityRatio, function):
         # область поиска
         self.start = x_min
         self.end = x_max
@@ -63,7 +64,7 @@ class Unit:
 
 class Swarm:
 
-    def __init__(self, sizeSwarm,
+    def __init__(self,x_min , x_max, x_step , y_min ,y_max , y_step, sizeSwarm,
                  currentVelocityRatio,
                  localVelocityRatio,
                  globalVelocityRatio,
@@ -138,3 +139,15 @@ class Swarm:
             points.append(self.f(x, y))
         return sukaBliat
 
+my_function = choise_function("Функция Экли")
+swarm = Swarm(x_min = 2 , x_max = 4, x_step = 0.2 , y_min = -2 ,y_max =2  , y_step = 0.2,sizeSwarm=10,
+              currentVelocityRatio=1,
+              localVelocityRatio=1,
+              globalVelocityRatio=1,
+              numbersOfLife=100,
+              function=my_function,
+              start=-10,
+              end=10)
+
+# Запускаем алгоритм оптимизации
+result = swarm.startSwarm()

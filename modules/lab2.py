@@ -1,7 +1,6 @@
 import random
 import matplotlib
 
-matplotlib.use('TkAgg')  # or 'Qt5Agg'
 
 
 def __generate_random_float__(start, end, step):
@@ -59,7 +58,7 @@ def method_splain_fly(x_min, x_max, x_step, y_min, y_max, y_step, get_length, la
   list_list_of_points = []
 
   while True:
-    list_list_of_points.append([list_of_points])
+    list_list_of_points.append(list_of_points)
     list_of_points = iteration(list_of_points, lambda_func)
     new_min_value = find_best_min_value(list_of_points, lambda_func)
 

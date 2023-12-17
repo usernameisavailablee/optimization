@@ -1,7 +1,51 @@
 from .sub_window import SubWindow
-from PyQt5.QtWidgets import QPushButton, QMessageBox
+from PyQt5.QtWidgets import QPushButton, QMessageBox, QLineEdit,QComboBox
+from modules.bee_swarm import *
+from modules.functions import choise_function
 
 class SubWindowBeeSwarm(SubWindow):
     def __init__(self, main_window, window_name):
         ui_filename = f'viev/windows/subwindow_{window_name}.ui'
         super().__init__(ui_filename, main_window)
+        self.button = self.findChild(QPushButton, 'pushButton')
+        self.combo_box = self.findChild(QComboBox, 'comboBox_Function')
+
+        self.line_edits = {
+            'x_min': self.findChild(QLineEdit, 'x_min'),
+            'x_max': self.findChild(QLineEdit, 'x_max'),
+            'y_min': self.findChild(QLineEdit, 'y_min'),
+            'y_max': self.findChild(QLineEdit, 'y_max'),
+            'x_step': self.findChild(QLineEdit, 'x_step'),
+            'y_step': self.findChild(QLineEdit, 'y_step'),
+            'number_of_bees':self.findChild(QLineEdit,'number_of_bees'),
+            'time':self.findChild(QLineEdit,'time'),
+
+        }
+
+
+        self.result = [[0,0]]
+        self.func = None
+
+        self.button.clicked.connect(self.button_click_handler)
+
+    def button_click_handler(self):
+
+        x_min = float(self.line_edits['x_min'].text())
+        x_max = float(self.line_edits['x_max'].text())
+        y_min = float(self.line_edits['y_min'].text())
+        y_max = float(self.line_edits['y_max'].text())
+        x_step = float(self.line_edits['x_step'].text())
+        y_step = float(self.line_edits['y_step'].text())
+        number_of_bees = int(self.line_edits['number_of_bees'].text())
+        time = int(self.line_edits['time'].text())
+
+
+
+        selected_item = self.combo_box.currentText()
+        func_name = selected_item
+        self.func = choise_function(func_name)
+        ff = self.func
+
+        history = algorithm_of_bees(x_min, x_max, x_step, y_min,y_max, y_step, number_of_bees, time,ff)
+        # Вызов суперклассового обработчика с передачей result и func
+        super().button_click_handler(self.func,history,x_min, x_max, y_min, y_max,x_step, y_step)
