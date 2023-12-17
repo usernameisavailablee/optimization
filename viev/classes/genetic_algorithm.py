@@ -43,10 +43,14 @@ class SubWindowGeneticAlgorithm(SubWindow):
         self.func = choise_function(func_name)
     #    best_individual, best_individual_history,all_generations  = genetic_algorithm(pop_size=100, genome_length=3, generations=10,self.func)
         ff = self.func
+<<<<<<< HEAD
         best_individual, best_individual_history, all_generations = genetic_algorithm(pop_size, generations, self.func)
         self.result = best_individual_history
+=======
+        all_generations = genetic_algorithm(x_min, x_max, x_step, y_min, y_max, y_step,self.func,pop_size, generations)
+>>>>>>> fd54495dddea37f1dd4b6805d05701bc85c76270
         # Вызов суперклассового обработчика с передачей result и func
-        super().button_click_handler(self.result, self.func,all_generations,x_min, x_max, y_min, y_max,x_step, y_step)
+        super().button_click_handler( self.func,all_generations,x_min, x_max, y_min, y_max,x_step, y_step)
 
 
 
