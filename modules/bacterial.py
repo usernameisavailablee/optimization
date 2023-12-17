@@ -93,8 +93,7 @@ def get_history_best_points(colonyBacteria):
 
     return points
 
-
-def algorithm_is_bacterial(min_x, max_x, min_y, max_y, number_of_bacteria, function, time, e):
+def algorithm_is_bacterial(min_x, max_x,x_step, min_y, max_y,y_step, number_of_bacteria, time, e,lambda_func):
     # колония бактерий
     colonyBacteria = []
 
@@ -102,7 +101,7 @@ def algorithm_is_bacterial(min_x, max_x, min_y, max_y, number_of_bacteria, funct
     l = 0.2
 
     for i in range(number_of_bacteria):
-        bacteria = Bacteria(min_x, max_x, min_y, max_y, function)
+        bacteria = Bacteria(min_x, max_x, min_y, max_y, lambda_func)
         colonyBacteria.append(bacteria)
     l = 0.2
 
@@ -114,14 +113,14 @@ def algorithm_is_bacterial(min_x, max_x, min_y, max_y, number_of_bacteria, funct
         for bacteria in range(number_of_bacteria):
             if i % 10 == 0:
                 l = l / 100 * 90
-            colonyBacteria[bacteria] = chemotaxis(colonyBacteria[bacteria], l, function)
+            colonyBacteria[bacteria] = chemotaxis(colonyBacteria[bacteria], l, lambda_func)
 
         # Сортируем бактерии в порядке уменьшея общего здоровья каждой бактерии
         sortColonyBacteria = sorted(colonyBacteria, key=lambda x: x.health())
         # Этап репродукции
         repColonyBacteria = reproduction(sortColonyBacteria)
         # Реализация ликвидации и рассеивания
-        liqColonyBacteria = liquidationAndDispersion(repColonyBacteria, e, min_x, max_x, min_y, max_y, function)
+        liqColonyBacteria = liquidationAndDispersion(repColonyBacteria, e, min_x, max_x, min_y, max_y, lambda_func)
 
         colonyBacteria = liqColonyBacteria
         # Получение нового массива, состоящего из последней точки каждого объекта

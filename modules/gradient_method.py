@@ -43,7 +43,7 @@ def method_performs_iterative_optimization_using_the_function_in_3D_visualizing_
     yy_old = yy_new
     f_value_old = f_value_new
 
-    ans_list.append([xx_old, yy_old])
+    ans_list.append([[xx_old, yy_old]])
 
     xx_new = xx_old - get_lmd * __df_dx__(lambda_func, xx_old, yy_old)
     yy_new = yy_old - get_lmd * __df_dy__(lambda_func, xx_old, yy_old)
