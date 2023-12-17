@@ -8,7 +8,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib import cm  # Импортируйте модуль colormap
 # Функция для создания 3D графика
-def create_3d_plot(result, func,all_generations, x_min, x_max, y_min, y_max, x_step, y_step):
+def create_3d_plot(func,all_generations, x_min, x_max, y_min, y_max, x_step, y_step):
 
     X = np.arange(x_min, x_max, x_step)
     Y = np.arange(y_min, y_max, y_step)
@@ -35,10 +35,6 @@ def create_3d_plot(result, func,all_generations, x_min, x_max, y_min, y_max, x_s
             scatter = ax.scatter(x, y, z, c='r', marker='o')
             scatter_points.append(scatter)
 
-            x1, y1 = result[generation_counter]
-            z1 = func(x1, y1)
-            scatter_result = ax.scatter(x1, y1, z1, c='g', marker='o')
-            scatter_points.append(scatter_result)
 
         plt.pause(0.2)
 
