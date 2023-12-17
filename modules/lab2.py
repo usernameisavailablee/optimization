@@ -56,8 +56,10 @@ def method_splain_fly(x_min, x_max, x_step, y_min, y_max, y_step, get_length, la
   best_min_value = new_min_value
   flag_best_twice = 0
 
-  while True:
+  list_list_of_points = []
 
+  while True:
+    list_list_of_points.append([list_of_points])
     list_of_points = iteration(list_of_points, lambda_func)
     new_min_value = find_best_min_value(list_of_points, lambda_func)
 
@@ -71,7 +73,4 @@ def method_splain_fly(x_min, x_max, x_step, y_min, y_max, y_step, get_length, la
       flag_best_twice = 0
       best_min_value = new_min_value
 
-  return list_of_points
-
-
-method_splain_fly(-5, 5, 0.5, -5, 5, 0.5, 0.1, lambda x, y: (1 - x) ** 2 + 100 * (y - x ** 2) ** 2)
+  return list_list_of_points
