@@ -105,10 +105,11 @@ def algorithm_is_bacterial(min_x, max_x,x_step, min_y, max_y,y_step, number_of_b
         colonyBacteria.append(bacteria)
     l = 0.2
 
-    history_best_points = []
+    list_of_list_of_list = []
     bestPoint = [colonyBacteria[0].arr_move[0][-1], colonyBacteria[0].arr_move[0][-1], colonyBacteria[0].arr_fitness[-1]]
 
     for i in range(time):
+        history_best_points = []
         # Проводим процедуру хемотаксиса
         for bacteria in range(number_of_bacteria):
             if i % 10 == 0:
@@ -127,10 +128,12 @@ def algorithm_is_bacterial(min_x, max_x,x_step, min_y, max_y,y_step, number_of_b
 
         # Вывод точек на экран
         last_points = get_history_best_points(colonyBacteria)
-        history_best_points.append(last_points[0:5])
+        for bacteriaX in last_points[0:5]:
+            history_best_points.append([bacteriaX[0],bacteriaX[1]])
+        list_of_list_of_list.append(history_best_points)
         if bestPoint[2] > last_points[0][2]:
             bestPoint = last_points[0]
             # print(bestPoint)
 
-    return history_best_points, bestPoint
+    return list_of_list_of_list
 
