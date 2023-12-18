@@ -116,14 +116,21 @@ class Swarm:
 
     def startSwarm(self):
         """ Метод для запуска алгоритма"""
-        sukaBliat = []
+        list_of_population = []
+
         dataForGIF = []
         for _ in range(self.numbersOfLife):
             oneDataX = []
             oneDataY = []
-            populiacia = []
+
+            population = [] # Создание популяции для одной итерации
             for unit in self.swarm:
-                populiacia.append(unit.currentPos)
+                # Создание двух мерной частицы и помещение ее в ее же популяцию
+                two_demantion_unit = []
+                two_demantion_unit.append(unit.currentPos[0])
+                two_demantion_unit.append(unit.currentPos[1])
+                population.append(two_demantion_unit)
+
                 oneDataX.append(unit.currentPos[0])
                 oneDataY.append(unit.currentPos[1])
                 unit.globalBestPos = self.globalBestPos
@@ -132,12 +139,12 @@ class Swarm:
                     self.globalBestScore = score
                     self.globalBestPos = unit.localBestPos
             dataForGIF.append([oneDataX, oneDataY])
-            sukaBliat.append(populiacia)
+            list_of_population.append(population)
 
         points = []
         for x, y in dataForGIF:
             points.append(self.f(x, y))
-        return sukaBliat
+        return list_of_population
 
 my_function = choise_function("Функция Экли")
 swarm = Swarm(x_min = 2 , x_max = 4, x_step = 0.2 , y_min = -2 ,y_max =2  , y_step = 0.2,sizeSwarm=10,
