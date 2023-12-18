@@ -178,10 +178,10 @@
      <string>Запуск алгоритма</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="pop_size">
+   <widget class="QLineEdit" name="size_swarm">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>520</x>
       <y>90</y>
       <width>113</width>
       <height>25</height>
@@ -191,17 +191,17 @@
      <string>100</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="generations">
+   <widget class="QLineEdit" name="currentVelocityRatio">
     <property name="geometry">
      <rect>
-      <x>390</x>
+      <x>520</x>
       <y>120</y>
       <width>113</width>
       <height>25</height>
      </rect>
     </property>
     <property name="text">
-     <string>100</string>
+     <string>0.5</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -214,7 +214,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Размер популяции</string>
+     <string>Размер роя</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -222,12 +222,12 @@
      <rect>
       <x>220</x>
       <y>120</y>
-      <width>161</width>
+      <width>241</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Количество генераций</string>
+     <string>Текущее соотношение скоростей</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="y_max">
@@ -334,6 +334,84 @@
      <string>step Y</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_10">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>150</y>
+      <width>261</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Локальное соотношение скоростей</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_11">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>180</y>
+      <width>261</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Глобальное соотношение скоростей</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="localVelocityRatio">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>150</y>
+      <width>113</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>2</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="globalVelocityRatio">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>180</y>
+      <width>113</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>5</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_12">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>210</y>
+      <width>261</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Количество живых</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="numbersOfLife">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>210</y>
+      <width>113</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>100</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -354,8 +432,8 @@
   <tabstop>y_min</tabstop>
   <tabstop>y_max</tabstop>
   <tabstop>y_step</tabstop>
-  <tabstop>pop_size</tabstop>
-  <tabstop>generations</tabstop>
+  <tabstop>size_swarm</tabstop>
+  <tabstop>currentVelocityRatio</tabstop>
   <tabstop>comboBox_Function</tabstop>
   <tabstop>pushButton</tabstop>
  </tabstops>
