@@ -125,11 +125,8 @@ class Swarm:
 
             population = [] # Создание популяции для одной итерации
             for unit in self.swarm:
-                # Создание двух мерной частицы и помещение ее в ее же популяцию
-                two_demantion_unit = []
-                two_demantion_unit.append(unit.currentPos[0])
-                two_demantion_unit.append(unit.currentPos[1])
-                population.append(two_demantion_unit)
+                # Создание двухмерной частицы и помещение ее в ее же популяцию
+                population.append([unit.currentPos[0],unit.currentPos[1]])
 
                 oneDataX.append(unit.currentPos[0])
                 oneDataY.append(unit.currentPos[1])
